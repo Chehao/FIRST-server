@@ -465,6 +465,7 @@ def metadata_scan(request, user):
                 }
     }
     '''
+    print ('api scan called.....')
     if not request.POST.get('functions'):
         return render(request, 'rest/error_json.html',
                         {'msg' : 'Invalid function information'})

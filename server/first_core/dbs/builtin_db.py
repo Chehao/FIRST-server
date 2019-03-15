@@ -152,6 +152,24 @@ class FIRSTDB(AbstractDB):
             QuerySet.
         '''
         return Metadata.objects.filter(function__pk=_id)
+    
+    def get_function_sample(self, _id):
+        try:
+            #   User function ID
+            if None != _id:
+                function = Function.objects.get(pk=_id)
+                samples = function.sample_set.all()
+                return [ x.sha1 for x in samples]
+
+            else:
+                return None
+
+        except ObjectDoesNotExist:
+            return None
+
+        except MultipleObjectsReturned:
+            #   TODO: Log
+            raise
 
     def get_function(self, opcodes, architecture, apis, create=False, **kwargs):
         sha256_hash = hashlib.sha256(opcodes).hexdigest()

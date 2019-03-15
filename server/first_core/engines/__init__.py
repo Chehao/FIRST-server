@@ -296,6 +296,8 @@ class FIRSTEngineManager(object):
                 results[result.id].add_engine(engine)
                 if results[result.id].similarity < result.similarity:
                     results[result.id].similarity = result.similarity
+                print("result....")
+                print(results[result.id])
 
         #   Order functions
         cmp_func = lambda x,y: (y.similarity > x.similarity) - (y.similarity < x.similarity)

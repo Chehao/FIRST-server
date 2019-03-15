@@ -140,7 +140,9 @@ class MnemonicHashEngine(AbstractEngine):
 
             else:
                 similarity += 5
-
+            samples = function.sample_set.all()
+            print ("mn function related samples------")
+            print ([ x.sha1 for x in samples])
             results.append(FunctionResult(str(function_id), similarity))
 
         return results

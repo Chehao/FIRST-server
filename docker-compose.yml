@@ -24,15 +24,15 @@ services:
 
    mongo:
       image: mongo
-      expose:
-         - 27017
+      ports:
+         - 27017:27017
       volumes:
          - ./data/mongodb:/data/db
       restart: always
    mysql:
       image: mysql:5.7
-      expose:
-         - 3306
+      ports:
+         - 3306:3306
       environment:
          - MYSQL_ROOT_PASSWORD=password12345
          - MYSQL_DATABASE=first_db
