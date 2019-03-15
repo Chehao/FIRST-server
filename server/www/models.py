@@ -160,7 +160,7 @@ class Metadata(models.Model):
         return False
 
     def dump(self, full=False):
-        data = {'creator' : self.user.user_handle}
+        data = {'creator' : self.user.name}
         latest_details = self.details.latest('committed')
         data.update({
             'name' : latest_details.name,

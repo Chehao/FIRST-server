@@ -101,6 +101,8 @@ class FunctionResult(Result):
             metadata = self._metadata.pop()
             data = metadata.dump()
             data['id'] = make_id(0, metadata=metadata.id)
+            # get sample sha1
+            data['samples'] = db.get_function_sample(self.id)
 
         return data
 

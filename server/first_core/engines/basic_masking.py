@@ -224,7 +224,10 @@ class BasicMaskingEngine(AbstractEngine):
                 func_apis = {x['api'] for x in function.apis.values('api')}
                 overlap = float(len(func_apis.intersection(apis)))
                 similarity += (overlap / total_apis) * 10
-
+            
+            samples = function.sample_set.all()
+            print ("function related samples------")
+            print ([ x.sha1 for x in samples])
             results.append(FunctionResult(str(function_id), similarity))
 
         return results
